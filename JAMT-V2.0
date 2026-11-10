@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Junior Astronaut Mission Trainer – Team Horzonyx</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#e6eefb;--surf:#fff;--ink:#10203a;--mute:#4d5d7a;--line:#c3d0e8;--acc:#e8401c;--accink:#fff;--o2:#1f7fe0;--pw:#c78f00;--sh:#7d3fd0;--fd:#1e9a58;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1126;--surf:#141e3c;--ink:#e9efff;--mute:#9fb0d4;--line:#2b3a66;--acc:#ff6a45;--accink:#1a0a05;--o2:#4aa3ff;--pw:#ffc83d;--sh:#b48cff;--fd:#48d98a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a1126;--surf:#141e3c;--ink:#e9efff;--mute:#9fb0d4;--line:#2b3a66;--acc:#ff6a45;--accink:#1a0a05;--o2:#4aa3ff;--pw:#ffc83d;--sh:#b48cff;--fd:#48d98a;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Lexend,system-ui,sans-serif;line-height:1.5;font-size:1.05rem}
+main{max-width:560px;margin:0 auto;padding:18px 16px 24px}
+h1{font-size:2rem;line-height:1.1;margin:8px 0 10px;font-weight:800}
+h2{font-size:1.2rem;margin:0 0 8px;font-weight:800}
+p{margin:0 0 10px}.mute{color:var(--mute);font-size:.9rem}
+.card{background:var(--surf);border:2px solid var(--line);border-radius:16px;padding:14px;margin:12px 0}
+.fact{border-color:var(--acc)}
+button{font:inherit;cursor:pointer;border:2px solid var(--ink);background:var(--surf);color:var(--ink);border-radius:12px;padding:10px 14px;min-height:48px}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+button:disabled{opacity:.4;cursor:not-allowed}
+.go{background:var(--acc);color:var(--accink);border-color:var(--acc);font-weight:600;width:100%;font-size:1.1rem}
+.world{display:block;width:100%;text-align:left;margin:10px 0}
+.world b{display:block;font-size:1.15rem}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.meter{margin:8px 0}.meter .row{display:flex;justify-content:space-between}
+.bar{height:16px;border-radius:8px;background:var(--line);overflow:hidden}
+.fill{height:100%;border-radius:8px;transition:width .5s}
+.low .row b{color:var(--acc)}
+.alloc{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.alloc:first-of-type{border-top:0}
+.alloc .t{flex:1}.alloc .t span{display:block;font-size:.85rem;color:var(--mute)}
+.alloc .n{width:28px;text-align:center;font-weight:800;font-size:1.3rem}
+.sq{width:48px;padding:0;font-size:1.4rem}
+.warn{border-left:6px solid var(--acc);padding:8px 12px;margin:8px 0;background:var(--surf);border-radius:8px;font-size:.95rem}
+.opt{display:block;width:100%;text-align:left;margin:8px 0}
+.opt b{display:block}.opt span{font-size:.95rem;color:var(--mute)}
+.res{display:flex;gap:8px;align-items:center;margin:6px 0;font-size:.9rem}.res .bar{flex:1}.res i{width:96px;font-style:normal}
+.big{font-size:2.6rem;margin:0}
+ol{padding-left:22px;margin:0}li{margin:4px 0}
+ul.f{padding-left:20px;margin:0;font-size:.95rem}
+footer{max-width:560px;margin:0 auto;padding:6px 16px 32px;text-align:center;color:var(--mute);font-size:.85rem}
+.sc{width:100%;height:auto;border-radius:12px;display:block;margin:8px 0}.tw{animation:tw 3s ease-in-out infinite alternate}@keyframes tw{from{opacity:.3}to{opacity:1}}.mood{font-size:1.8rem;line-height:1}.ev{font-size:3rem;margin:0;line-height:1.1}.menu{display:grid;gap:12px;margin:16px 0}.menu button{font-size:1.15rem;text-align:left;padding:14px 16px;display:flex;gap:12px;align-items:center}.menu span{font-size:.85rem;color:var(--mute)}.menu .ic{font-size:1.6rem;color:inherit}.menu .go span{color:inherit}.float{display:inline-block;animation:fl 3s ease-in-out infinite alternate}@keyframes fl{from{transform:translateY(0)}to{transform:translateY(-8px)}}button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}.st{min-height:2.9em;margin:4px 0}@media (max-height:520px){.stick{position:static}}.shake{animation:shk .5s}@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}.stick{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;box-shadow:0 4px 14px rgba(0,0,0,.35)}.fly{animation:fly 16s linear infinite}.drift{animation:fly 22s linear infinite}@keyframes fly{from{transform:translateX(0)}to{transform:translateX(460px)}}.shoot{opacity:0;animation:sh 7s 2s infinite}@keyframes sh{0%{opacity:0;transform:translate(0,0)}4%{opacity:1}14%{opacity:0;transform:translate(120px,48px)}100%{opacity:0}}.bob{animation:bob 1.2s ease-in-out infinite alternate}@keyframes bob{to{transform:translateY(-4px)}}.blink{animation:bl 2s ease-in-out infinite alternate}@keyframes bl{from{opacity:.4}to{opacity:1}}.mood{display:inline-block;animation:wob 2s ease-in-out infinite}@keyframes wob{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}.ev{animation:bn .9s ease-out;transform-origin:left center}@keyframes bn{0%{transform:scale(.3)}60%{transform:scale(1.2)}100%{transform:scale(1)}}.go:not(:disabled){animation:pulse 1.8s ease-in-out infinite}@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,64,28,.5)}50%{box-shadow:0 0 0 9px rgba(232,64,28,0)}}button:active:not(:disabled){transform:scale(.95)}.conf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}.conf span{position:absolute;top:-30px;font-size:1.6rem;animation:fall 3s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}.astro{opacity:0;animation:walk 1.5s ease-out forwards}@keyframes walk{0%{opacity:0;transform:translate(0,0)}10%{opacity:1}85%{opacity:1;transform:translate(var(--dx),var(--dy))}100%{opacity:0;transform:translate(var(--dx),var(--dy))}}.pop{opacity:0;animation:pop 1.2s 1.2s ease-out forwards}@keyframes pop{0%{opacity:0;transform:translateY(6px)}30%{opacity:1;transform:translateY(-6px)}75%{opacity:1}100%{opacity:0;transform:translateY(-16px)}}.up{animation:upin .6s 1.3s both}@keyframes upin{from{opacity:0}to{opacity:1}}.seg{display:flex;gap:8px}.seg button{flex:1}.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surf)}@media (prefers-reduced-motion:reduce){.fill{transition:none}.tw{animation:none}.float{animation:none}.astro,.pop{display:none}.up{animation:none}.fly,.shoot,.drift,.bob,.blink,.mood,.ev,.go,.shake{animation:none}.conf{display:none}}
+
+/* =========================================================
+   HORZONYX // PREMIUM MISSION UI
+   Visual-only layer: gameplay logic and JavaScript untouched.
+   ========================================================= */
+:root{
+  --bg:#071326;
+  --surf:rgba(15,29,54,.92);
+  --ink:#edf5ff;
+  --mute:#9eb2d0;
+  --line:rgba(135,171,220,.24);
+  --acc:#ff754d;
+  --accink:#190b08;
+  --o2:#42b9ff;
+  --pw:#ffd166;
+  --sh:#bd8cff;
+  --fd:#55e6a5;
+  color-scheme:dark;
+  font-synthesis:none;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --bg:#eaf1fb;
+    --surf:rgba(255,255,255,.94);
+    --ink:#12233f;
+    --mute:#5f718e;
+    --line:rgba(74,105,151,.22);
+    --acc:#e84d2b;
+    --accink:#fff;
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#eaf1fb;--surf:rgba(255,255,255,.94);--ink:#12233f;
+  --mute:#5f718e;--line:rgba(74,105,151,.22);--acc:#e84d2b;
+  --accink:#fff;color-scheme:light;
+}
+html{min-height:100%;background:var(--bg);scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse at 12% 0%,rgba(49,111,190,.22),transparent 38rem),
+    radial-gradient(ellipse at 100% 32%,rgba(120,75,190,.13),transparent 34rem),
+    linear-gradient(160deg,var(--bg),color-mix(in srgb,var(--bg) 82%,#162b4d));
+  letter-spacing:.005em;
+}
+main{max-width:680px;padding:clamp(16px,4vw,28px) clamp(14px,4vw,24px) 34px}
+h1{font-size:clamp(1.85rem,5vw,2.55rem);letter-spacing:-.045em;line-height:1.08}
+h2{letter-spacing:-.02em}
+p{line-height:1.62}
+.mute{letter-spacing:.015em}
+.card{
+  position:relative;
+  overflow:hidden;
+  background:var(--surf);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:clamp(15px,3.5vw,21px);
+  margin:15px 0;
+  box-shadow:0 12px 34px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.055);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+.card:before{
+  content:"";position:absolute;inset:0 0 auto;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+  pointer-events:none;
+}
+.fact{border:1px solid color-mix(in srgb,var(--acc) 55%,var(--line));}
+button{
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:11px 16px;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--surf) 90%,#fff 10%),var(--surf));
+  box-shadow:0 5px 14px rgba(0,0,0,.09),inset 0 1px 0 rgba(255,255,255,.08);
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease;
+}
+button:hover:not(:disabled){
+  border-color:color-mix(in srgb,var(--acc) 65%,var(--line));
+  box-shadow:0 8px 22px rgba(0,0,0,.15),0 0 0 2px color-mix(in srgb,var(--acc) 12%,transparent);
+}
+button:active:not(:disabled){transform:translateY(1px) scale(.985)}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.go{
+  border:1px solid color-mix(in srgb,var(--acc) 80%,white 20%);
+  border-radius:16px;
+  background:linear-gradient(115deg,var(--acc),color-mix(in srgb,var(--acc) 72%,#ffbd73));
+  color:var(--accink);
+  box-shadow:0 10px 24px color-mix(in srgb,var(--acc) 22%,transparent);
+  font-weight:800;
+  letter-spacing:.015em;
+}
+.go:hover:not(:disabled){box-shadow:0 13px 30px color-mix(in srgb,var(--acc) 30%,transparent)}
+.world{
+  padding:12px;
+  border-radius:19px;
+  background:var(--surf);
+  box-shadow:0 8px 22px rgba(0,0,0,.10);
+}
+.world .sc{margin:0 0 12px;border:1px solid var(--line);box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
+.world b{font-size:1.18rem;letter-spacing:-.02em}
+.world .mute{display:block;margin-top:3px}
+.sc{
+  border:1px solid rgba(160,190,235,.22);
+  border-radius:18px;
+  box-shadow:0 12px 28px rgba(0,0,0,.18);
+  overflow:hidden;
+}
+.stick{top:calc(env(safe-area-inset-top,0px) + 6px);border-radius:18px}
+.menu{gap:13px}
+.menu button{border-radius:18px;min-height:66px}
+.menu .go{border:0}
+.menu .ic{width:34px;text-align:center}
+.top{gap:12px}
+.top>span{font-weight:700}
+.meter{margin:12px 0}
+.meter .row{font-size:.94rem;margin-bottom:5px}
+.bar{height:11px;border-radius:99px;background:color-mix(in srgb,var(--line) 78%,transparent)}
+.fill{border-radius:99px;box-shadow:0 0 12px color-mix(in srgb,currentColor 18%,transparent)}
+.alloc{padding:11px 0;border-color:var(--line)}
+.alloc .t{font-weight:700}
+.alloc .t span{font-weight:400;line-height:1.4;margin-top:2px}
+.sq{width:46px;min-width:46px;border-radius:13px;font-weight:800}
+.opt{border-radius:16px;padding:14px 15px;background:var(--surf)}
+.opt b{font-size:1rem}
+.opt span{display:block;margin-top:4px}
+.warn{
+  border:1px solid color-mix(in srgb,var(--acc) 35%,var(--line));
+  border-left:4px solid var(--acc);
+  border-radius:14px;
+  padding:11px 14px;
+  background:color-mix(in srgb,var(--surf) 90%,var(--acc) 10%);
+}
+.seg{padding:4px;background:color-mix(in srgb,var(--line) 40%,transparent);border-radius:15px}
+.seg button{box-shadow:none;border-color:transparent;border-radius:11px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);box-shadow:0 3px 10px rgba(0,0,0,.15)}
+.res{gap:10px;margin:10px 0}
+.res i{width:104px}
+.big{font-size:3rem}
+.ev{font-size:3.4rem;filter:drop-shadow(0 8px 12px rgba(0,0,0,.18))}
+footer{padding:12px 20px 34px;line-height:1.7}
+#app>h1,#app>.top,#app>.card{animation:hz-enter .38s ease both}
+@keyframes hz-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:700px){
+  main{padding-top:30px}
+  .menu{grid-template-columns:1fr 1fr}
+}
+@media(max-width:390px){
+  body{font-size:1rem}
+  main{padding-left:12px;padding-right:12px}
+  .card{border-radius:18px}
+  .alloc{gap:7px}
+  .alloc .t{font-size:.94rem}
+  .alloc .t span{font-size:.78rem}
+  .res i{width:88px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+</style>
+</head>
+<body>
+<main id="app"></main>
+<footer>Made by Team Horzonyx for the NASA Space Apps Challenge, Virudhunagar.<br>Facts are based on NASA science pages and mission results.</footer>
+<script>
+var DAYS=8;
+var W={
+ moon:{name:"Moon base",icon:"🌙",d:{o2:8,pw:8,sh:8,fd:7},blurb:"No thick air to block space radiation. Long, freezing nights.",
+  facts:["A day and a night on the Moon each last about 14 Earth days.","Moon gravity is about one-sixth of Earth’s. You could jump very high!","The Moon has almost no air, so sunlight and space radiation hit the ground directly.","Moon surface temperatures range from about −173 °C to 127 °C.","NASA’s Lunar Reconnaissance Orbiter measured −247 °C inside a Moon crater, one of the coldest places found in our solar system.","In the daytime the Moon’s surface can reach about 120 °C, hotter than boiling water on Earth.","The Moon has no seasons. Your base gets about 14 days of sunlight, then about 14 days of dark.","Moon dust is sharp and sticks to everything, so engineers must plan for it."]},
+ mars:{name:"Mars base",icon:"🔴",d:{o2:8,pw:9,sh:6,fd:9},blurb:"Dust storms cover your solar panels. Plants need extra care.",
+  facts:["A day on Mars is called a sol. It lasts 24 hours and 39 minutes.","Mars air is about 95% carbon dioxide, so people cannot breathe it.","Mars gravity is about 38% of Earth’s. You would feel much lighter.","In 2021, NASA’s Perseverance rover made oxygen from Mars air with a tool called MOXIE.","In 2018 a dust storm covered the whole planet. It blocked sunlight from the Opportunity rover’s solar panels.","Mars is cold. The average temperature is about −63 °C.","A year on Mars lasts 687 Earth days, almost twice as long as ours.","Mars looks red because its dust has rusty iron in it."]},
+ iss:{name:"Space station",icon:"🛰️",d:{o2:8,pw:6,sh:5,fd:8},blurb:"Orbits Earth every 90 minutes. Everything floats!",
+  facts:["The International Space Station orbits Earth about every 90 minutes.","Astronauts on the station see about 16 sunrises and sunsets every day.","The station travels at about 28,000 kilometres per hour.","Things float on the station because it is always falling around Earth.","The station recycles most of its water, including water from sweat and breath.","Astronauts exercise about two hours a day to keep their bones and muscles strong.","Astronauts have grown lettuce and chili peppers on the station.","The station is about as long as a football field."]},
+ europa:{name:"Europa base",icon:"🧊",d:{o2:8,pw:10,sh:10,fd:9},blurb:"An icy moon of Jupiter. Strong radiation and weak sunlight.",
+  facts:["Europa is an icy moon that orbits the giant planet Jupiter.","Scientists think Europa has a giant salty ocean hidden under its ice.","Jupiter’s strong magnetic field fills the space around Europa with powerful radiation.","Sunlight at Jupiter is much weaker than on Earth, so solar panels make less power.","NASA’s Europa Clipper spacecraft is on its way to study Europa.","Europa’s surface is very cold, about −160 °C near the equator.","Europa is a little smaller than Earth’s Moon.","Europa is covered by an icy shell that may be many kilometres thick."]},
+ titan:{name:"Titan base",icon:"🟠",d:{o2:8,pw:10,sh:5,fd:10},blurb:"A moon of Saturn with thick orange air and lakes of liquid methane.",
+  facts:["Titan is the biggest moon of Saturn.","Titan has thick orange air, and it is mostly nitrogen like Earth’s air.","Titan has lakes and rivers, but they hold liquid methane and ethane, not water.","Titan’s surface is extremely cold, about −179 °C.","Titan is the only moon in our solar system with a thick atmosphere.","NASA’s Dragonfly is a flying robot planned to hop between places on Titan.","Titan is wider than the planet Mercury.","Titan’s thick air blocks some radiation, but sunlight there is very dim."]},
+ asteroid:{name:"Asteroid base",icon:"☄️",d:{o2:8,pw:8,sh:7,fd:8},blurb:"A tiny space rock with almost no gravity. Hold on tight!",
+  facts:["Asteroids are leftover pieces from when our solar system was young.","Asteroids have very weak gravity, so things can float away easily.","Asteroid Bennu is shaped a bit like a spinning top.","A day on Bennu is only about 4 hours long.","NASA’s OSIRIS-REx spacecraft brought a sample from Bennu to Earth in 2023.","Bennu is about 500 metres wide.","NASA’s Psyche spacecraft is travelling to an asteroid that is rich in metal.","Scientists study asteroid samples to learn how planets formed."]},
+ venus:{name:"Venus cloud base",icon:"☁️",d:{o2:7,pw:7,sh:4,fd:9},blurb:"A floating city in Venus’s clouds. The ground below is far too hot.",
+  facts:["Venus is the hottest planet, with a surface about 465 °C.","Venus’s air is mostly carbon dioxide, so people cannot breathe it.","A day on Venus is longer than its year!","Venus’s clouds are made of sulfuric acid.","Venus spins backward compared with most planets.","High in Venus’s clouds, the air pressure and temperature are much closer to Earth’s.","NASA scientists have studied ideas for floating cities in Venus’s clouds.","Venus is about the same size as Earth."]},
+ ceres:{name:"Ceres base",icon:"✨",d:{o2:8,pw:10,sh:7,fd:9},blurb:"A dwarf planet in the asteroid belt with bright salty spots.",
+  facts:["Ceres is the biggest object in the asteroid belt.","Ceres is a dwarf planet.","Ceres has bright spots made mostly of salty minerals.","Gravity on Ceres is only about 3% of Earth’s.","NASA’s Dawn spacecraft orbited Ceres from 2015 to 2018.","A day on Ceres lasts about 9 hours.","Dawn was the first spacecraft to orbit two different worlds beyond Earth.","Scientists think Ceres has a lot of water ice inside."]}
+};
+var SYS=[
+ {k:"o2",n:"Air",i:"💨",tip:"Clean air to breathe"},
+ {k:"pw",n:"Power",i:"⚡",tip:"Solar panels and batteries"},
+ {k:"sh",n:"Shield",i:"🛡️",tip:"Blocks space radiation"},
+ {k:"fd",n:"Food",i:"🌱",tip:"Plants in the greenhouse"}
+];
+var COL={o2:"var(--o2)",pw:"var(--pw)",sh:"var(--sh)",fd:"var(--fd)"};
+var EV=[
+ {w:"both",t:"Solar flare!",x:"The Sun sent out a burst of radiation.",f:"Space has no thick air to protect us like Earth does. NASA crews use shelters during solar storms.",c:[
+  {n:"Hide in the shield room",e:{pw:-5}},{n:"Keep working outside",e:{sh:-30}}]},
+ {w:"both",t:"Tiny space rock hit the wall",x:"A small leak is letting air out.",f:"Tiny space rocks called micrometeoroids hit spacecraft all the time, so crews check for leaks.",c:[
+  {n:"Patch it now",e:{o2:-5,pw:-5}},{n:"Fix it later",e:{o2:-25}}]},
+ {w:"both",t:"Plants are getting sick",x:"Some greenhouse plants are turning brown.",f:"Growing food in space takes light, water, power and care.",c:[
+  {n:"Fix the greenhouse",e:{fd:-5,pw:-10}},{n:"Eat stored food",e:{fd:-25}}]},
+ {w:"both",t:"A supply capsule landed!",x:"Pick one box to open.",f:"Real missions bring extra supplies because resupply trips take a long time.",c:[
+  {n:"Air tanks",e:{o2:20}},{n:"Batteries",e:{pw:20}},{n:"Seeds",e:{fd:20}}]},
+ {w:"mars",t:"Dust storm!",x:"Red dust is covering the solar panels.",f:"Mars dust storms can cover the whole planet and last for weeks or months.",c:[
+  {n:"Clean the panels",e:{fd:-10}},{n:"Wait it out",e:{pw:-28}}]},
+ {w:"mars",t:"Oxygen machine test",x:"Your MOXIE-style machine can make oxygen from Mars air.",f:"NASA’s MOXIE made oxygen from Mars air in 2021. It uses a lot of electricity.",c:[
+  {n:"Turn it on",e:{pw:-15,o2:25}},{n:"Skip it today",e:{}}]},
+ {w:"moon",t:"Freezing cold!",x:"It is getting very cold outside.
